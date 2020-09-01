@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Livecron | Equipo
+    </title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Cursos de profesionalización para adquirir habilidades que te permitirán desarrollar el futuro.">
+    <meta name="keywords" content="frontend development, backend development, mobile development, Python, PHP, JS, JavaScript, Android, iOS, Angular, Linux">
+    <meta name="author" content="Livecron Academy">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#343b43" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="css/vendor.min.css">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.css">
+    <!-- Modernizr-->
+    <script src="js/modernizr.min.js"></script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Off-Canvas Menu-->
+    <div class="offcanvas-container is-triggered offcanvas-container-reverse" id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
+      <div class="px-4 pb-4">
+        <h6>Menu</h6>
+      </div>
+      <div class="offcanvas-scrollable-area border-top" style="height:calc(100% - 235px); top: 144px;">
+        <!-- Mobile Menu-->
+        <div class="accordion mobile-menu" id="accordion-menu">
+          <!-- Home-->
+          <div class="card">
+            <div class="card-header"><a class="mobile-menu-link" href="index.html">Inicio</a></div>
+          </div>
+          <!-- Team-->
+          <div class="card">
+            <div class="card-header"><a class="mobile-menu-link active" href="team.html">Nuestro Equipo</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Navbar: Default-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar-wrapper navbar-sticky">
+      <div class="d-table-cell align-middle pr-md-3"><a class="navbar-brand mr-1" href="index.html"><img src="img/logo/logo-dark.png" alt="CreateX"/></a></div>
+      <div class="d-table-cell w-100 align-middle pl-md-3">
+        <div class="navbar justify-content-end justify-content-lg-between">
+          <!-- Search-->
+          <form class="search-box" method="get">
+            <input type="text" id="site-search" placeholder="Type A or C to see suggestions"><span class="search-close"><i class="fe-icon-x"></i></span>
+          </form>
+          <!-- Main Menu-->
+          <ul class="navbar-nav d-none d-lg-block">
+            <!-- Home-->
+            <li class="nav-item mega-dropdown-toggle"><a class="nav-link" href="index.html">Inicio</a>
+            <!-- About Us-->
+            <li class="nav-item dropdown-toggle active"><a class="nav-link" href="team.html">Nuestro Equipo</a></li>
+          </ul>
+          <div>
+            <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
+              <li class="d-block d-lg-none"><a href="#mobile-menu" data-toggle="offcanvas"><i class="fe-icon-menu"></i></a></li>
+            </ul><a class="btn btn-gradient ml-3 d-none d-xl-inline-block" href="https://www.facebook.com/Livecron-488285751624294" target="_blank">FACEBOOK</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Page Content-->
+    <!-- Hero-->
+    <!-- <section class="bg-parallax bg-secondary py-5 mb-5">
+      <div class="bg-parallax-img" data-parallax="{&quot;y&quot; : 100}"><img src="img/pages/about-hero-bg.png" alt="Parallax Background"/>
+      </div>
+      <div class="container bg-parallax-content py-5 my-3 text-center">
+        <h1 class="pb-4"><span class='d-block h3 font-family-body font-weight-light text-muted mb-2'>We are leading</span>Web Design Agency<span class='d-block h2 font-weight-normal text-muted mt-3'>since 2007</span></h1><a class="scroll-to btn btn-gradient" href="#services">Learn More</a>
+      </div>
+    </section> -->
+    <!-- Services-->
+    <!-- <section class="container pt-3 pb-4 mb-5" data-offset-top="110" id="services">
+      <h2 class="h3 block-title text-center mb-3">What We Offer<small>Is to be your reliable partner in following areas</small></h2>
+      <div class="row">
+        <div class="col-lg-3 col-sm-6">
+          <div class="icon-box text-center mx-auto">
+            <div class="icon-box-icon"><i class="fe-icon-monitor"></i></div>
+            <h3 class="icon-box-title">Responsive Web Design</h3>
+            <p class="icon-box-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><a class="icon-box-link" href="services.html">Learn more<i class="fe-icon-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="icon-box text-center mx-auto">
+            <div class="icon-box-icon"><i class="fe-icon-smartphone"></i></div>
+            <h3 class="icon-box-title">Mobile First UX Design</h3>
+            <p class="icon-box-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><a class="icon-box-link" href="services.html">Learn more<i class="fe-icon-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="icon-box text-center mx-auto">
+            <div class="icon-box-icon"><i class="fe-icon-server"></i></div>
+            <h3 class="icon-box-title">Back-End Development</h3>
+            <p class="icon-box-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><a class="icon-box-link" href="services.html">Learn more<i class="fe-icon-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+          <div class="icon-box text-center mx-auto">
+            <div class="icon-box-icon"><i class="fe-icon-life-buoy"></i></div>
+            <h3 class="icon-box-title">Lifetime Client Support</h3>
+            <p class="icon-box-text text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p><a class="icon-box-link" href="services.html">Learn more<i class="fe-icon-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-5">
+    </section> -->
+    <!-- Team-->
+    <section class="container pb-5">
+      <h2 class="h3 block-title text-center mb-4">Nuestros instructores<small>Personas con gran experiencia y trayectoria</small></h2>
+      <div class="row">
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/01.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Frontend Developer Fundamentas</span>
+            <h4 class="team-name">Lizzy Mendivil <br>Bejarano</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/02.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Pogramación en Java</span>
+            <h4 class="team-name">Jhonatan <br> Mamani</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/03.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Backend Developer con PHP y Angular</span>
+            <h4 class="team-name">Serafín Alavi <br> Fuentes</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/04.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Base de Datos con MySQL y PostgreSQL</span>
+            <h4 class="team-name">Juan Carlos <br>Guzman</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/05.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Linux Fundamentals</span>
+            <h4 class="team-name">Elvis<br>Ramírez</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/06.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Programación en Python</span>
+            <h4 class="team-name">Diego<br>Zambrana</h4>
+          </div>
+        </div>
+        <!-- Team member-->
+        <div class="col-lg-3 col-sm-6">
+          <div class="team-card-style-1 mx-auto">
+            <div class="team-card-inner">
+              <div class="team-thumb"><img src="img/team/07.jpg" alt="Team Member Picture"/>
+              </div>
+            </div><span class="team-position">Linux Administrador</span>
+            <h4 class="team-name">Jose Luis<br>Yacelly</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Partners-->
+    <!-- <section class="container py-5 my-2">
+      <h2 class="h3 block-title text-center mt-3 mb-5">Our Partners<small>Well respected people and companies from around the world</small></h2>
+      <div class="row">
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/01.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/02.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/03.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/04.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/07.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/05.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/08.png" width="165" alt="Partner"></a></div>
+        <div class="col-6 col-md-3"><a class="d-block box-shadow py-5 mb-30" href="#"><img class="d-block mx-auto" src="img/partners/09.png" width="165" alt="Partner"></a></div>
+      </div>
+    </section> -->
+    <!-- Contact Us CTA-->
+    <section class="bg-gradient py-4">
+      <div class="container position-relative bg-no-repeat bg-center py-5 text-center" style="background-image: url(img/home/dotted-map.png);">
+        <h2 class="block-title text-white mt-5 mb-4">Fórmate con nosotros<small class="text-white">Te ofrecemos ventajas y beneficios que potenciaran tus hablidades.</small></h2><a class="btn btn-light mb-5" target="_blank" href="https://www.facebook.com/Livecron-488285751624294">Contactanos</a>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer class="d-lg-flex align-items-center bg-dark">
+      <div class="w-100 py-5 px-4">
+        <div class="mx-auto text-center" style="max-width: 340px;">
+          <h6 class="text-sm font-weight-medium text-white text-uppercase text-center">Contactanos</h6>
+          <ul class="list-unstyled text-white">
+            <li><span class='opacity-60'>Celular:</span>+591 76419670</li>
+            <li><span class='opacity-60'>Email:</span> admision@livecron.com</li>
+          </ul>
+          <div class="widget pt-3 mb-4"><a class="social-btn sb-style-6 sb-facebook sb-light-skin" target="_blank" href="https://www.facebook.com/Livecron-488285751624294"><i class="socicon-facebook"></i></a><a class="social-btn sb-style-6 sb-twitter sb-light-skin" target="_blank" href="https://twitter.com/livecron"><i class="socicon-twitter"></i></a></div>
+          <p class="m-0 text-sm text-white"><span class='opacity-60'>© Todos los derechos reservados </span><a href='//livecron.com' class='d-inline-block nav-link text-white opacity-60 p-0' target='_blank'>Livecron</a></p>
+        </div>
+      </div>
+    </footer>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="fe-icon-chevron-up"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="js/vendor.min.js"></script>
+    <script src="js/theme.min.js"></script>
+  </body>
+</html>
