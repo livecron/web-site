@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador de Reacciones con Barra Estadística</title>
+  <style>
+    #reaction-counts {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      margin-top: 20px;
+    }
+    .reaction {
+      margin-bottom: 20px;
+      padding: 5px;
+    }
+    .reaction-bar-container {
+      width: 100%;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      height: 30px;
+      margin-top: 5px;
+      position: relative;
+    }
+    .reaction-bar {
+      height: 100%;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      line-height: 30px; /* Centra el texto verticalmente */
+    }
+  </style>
+</head>
+<body>
+  <h1>Contador de Reacciones de Facebook</h1>
+  <div id="reaction-counts">
+    <div class="reaction">Me Gusta: <span id="like-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="like-bar" class="reaction-bar" style="background-color: #3b5998;">0%</div>
+    </div>
+    
+    <div class="reaction">Me Encanta: <span id="love-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="love-bar" class="reaction-bar" style="background-color: #f44336;">0%</div>
+    </div>
+
+    <div class="reaction">Me Divierte: <span id="haha-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="haha-bar" class="reaction-bar" style="background-color: #ffeb3b;">0%</div>
+    </div>
+
+    <div class="reaction">Me Sorprende: <span id="wow-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="wow-bar" class="reaction-bar" style="background-color: #ff9800;">0%</div>
+    </div>
+
+    <div class="reaction">Me Entristece: <span id="sad-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="sad-bar" class="reaction-bar" style="background-color: #9c27b0;">0%</div>
+    </div>
+
+    <div class="reaction">Me Enoja: <span id="angry-count">0</span></div>
+    <div class="reaction-bar-container">
+      <div id="angry-bar" class="reaction-bar" style="background-color: #f44336;">0%</div>
+    </div>
+  </div>
+
+  <script>
+    // Configura tu token de acceso y el ID de la publicación
+    const accessToken = '78a80f843c7d045ffe5e54739191c74a';
+    const postId = '428867035757202'; // Obtén el ID de la publicación desde la URL del post
+
+    // URL inicial para obtener las reacciones
+    const baseUrl = `https://graph.facebook.com/${postId}/reactions`;
+
+    // Función para hacer solicitudes con reintentos
+    async function fetchWithRetries(url, retries = 5, backoffTime = 1000) {
+      try {
+        const response = await fetch(url);
+        
+        // Si la solicitud tiene éxito, la API devuelve un código de estado 200
+        if (response.ok) {
+          return await response.json();
+        } else if (response.status === 429) {
+          // Si se alcanza el límite de solicitudes (Error 429), esperamos un poco y reintentamos
+          console.log("Límite de solicitudes alcanzado, esperando...");
+          await new Promise(resolve => setTimeout(resolve, backoffTime));  // espera tiempo (backoff)
+          return fetchWithRetries(url, retries, backoffTime * 2);  // Exponential backoff (duplicar tiempo de espera)
+        } else {
+          throw new Error(`Error: ${response.status}`);
+        }
+      } catch (error) {
+        if (retries > 0) {
+          console.error(`Error al obtener datos. Reintentando... (${retries} intentos restantes)`);
+          return fetchWithRetries(url, retries - 1, backoffTime);
+        } else {
+          console.error("No se pudieron obtener las reacciones después de varios intentos.");
+          throw error;
+        }
+      }
+    }
+
+    // Función para obtener las reacciones con paginación
+    async function getReactions(url) {
+      let reactionCounts = {
+        LIKE: 0,
+        LOVE: 0,
+        HAHA: 0,
+        WOW: 0,
+        SAD: 0,
+        ANGRY: 0
+      };
+
+      let totalReactions = 0;
+      let currentUrl = url;
+
+      // Mientras haya una URL siguiente en la respuesta (paginación)
+      while (currentUrl) {
+        try {
+          const data = await fetchWithRetries(`${currentUrl}&access_token=${accessToken}`);
+          
+          // Contamos las reacciones de esta página
+          data.data.forEach(reaction => {
+            if (reactionCounts[reaction.type] !== undefined) {
+              reactionCounts[reaction.type]++;
+            }
+          });
+
+          // Calculamos el total de reacciones
+          totalReactions += data.data.length;
+
+          // Si hay una siguiente página, seguimos con la URL siguiente
+          currentUrl = data.paging && data.paging.next ? data.paging.next : null;
+
+        } catch (error) {
+          console.error("Error durante la paginación:", error);
+          break;  // Si ocurre un error fatal, salimos de la paginación
+        }
+      }
+
+      // Calculamos y mostramos los porcentajes
+      updateReactionBars(reactionCounts, totalReactions);
+    }
+
+    // Función para actualizar las barras de reacción y mostrar los porcentajes
+    function updateReactionBars(reactionCounts, totalReactions) {
+      const reactions = ['LIKE', 'LOVE', 'HAHA', 'WOW', 'SAD', 'ANGRY'];
+
+      reactions.forEach(type => {
+        const count = reactionCounts[type];
+        const percentage = (count / totalReactions) * 100;
+        const elementId = `${type.toLowerCase()}-count`;
+        const barId = `${type.toLowerCase()}-bar`;
+
+        // Actualizar el número de reacciones
+        document.getElementById(elementId).innerText = `${count} (${percentage.toFixed(2)}%)`;
+
+        // Actualizar la barra de progreso
+        document.getElementById(barId).style.width = `${percentage}%`;
+        document.getElementById(barId).innerText = `${percentage.toFixed(2)}%`;
+      });
+    }
+
+    // Llamamos a la función para obtener las reacciones desde la URL inicial
+    getReactions(baseUrl);
+  </script>
+</body>
+</html>
