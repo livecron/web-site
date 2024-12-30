@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reacciones de Facebook</title>
+</head>
+<body>
+
+    <h1>Cantidad de Reacciones en una Publicación de Facebook</h1>
+    <div id="reacciones"></div>
+
+    <script>
+        // Reemplaza con el ID de la publicación de Facebook y tu token de acceso
+        const postId = 'pfbid031rC6W4CXS6Ajm7BRJs5YZvCooux5Fq2qiT7xxh8ciPBgL1DQJ3bgXkwcqizTTsf1l';
+        const accessToken = 'EAB9VINscZBvEBOZBzngqijgWqxA7MxCChu6q2KDwV4Eex66zN9uPX3b67uGyiyfmu32Ay9Ui5LZCZAU1ULa4Wsf3FDY4dftRHpQ06ipBKGrZAbz0NksWlIKqljY5ZBDmvP25PkQtGkppEWNuWPkt7j8SZAnjrhjIySLOzvVFi9rxQ1s5RoJaHJGjdUHaxcdZALSyXl7ee3jtbclwNW5twEpNWxHsQLe15m9Leb7IDb8ZD';
+
+        // URL de la API de Graph de Facebook
+        const url = `https://graph.facebook.com/${postId}?fields=reactions.summary(total_count)&access_token=${accessToken}`;
+
+        // Función para obtener las reacciones
+        function obtenerReacciones() {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.reactions) {
+                        const cantidadReacciones = data.reactions.summary.total_count;
+                        document.getElementById('reacciones').innerHTML = `Cantidad de reacciones: ${cantidadReacciones}`;
+                    } else {
+                        document.getElementById('reacciones').innerHTML = "No se pudo obtener la información.";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al obtener datos de la API:', error);
+                    document.getElementById('reacciones').innerHTML = "Error al obtener las reacciones.";
+                });
+        }
+
+        // Llamada a la función al cargar la página
+        window.onload = obtenerReacciones;
+    </script>
+
+</body>
+</html>
